@@ -25,7 +25,7 @@ const reply_message = (callback) => {
 		//if (length > 16000000) {
 		    title = item.title;
 		    pubDate = item.pubDate;
-		    url = item.enclosure['$'].url;
+		    url = item.enclosure['$'].url.replace("http:", "https:");
 		    break
 		}
 	    };
