@@ -1,8 +1,8 @@
 MODULE=nhk-news-alexa
 all:
+	node index.js
 	zip -r -q ${MODULE} index.js  node_modules
-	aws s3 --profile s3-upload-lambda cp ${MODULE}.zip s3://sanpei/${MODULE}/
-	echo https://s3-ap-northeast-1.amazonaws.com/sanpei/${MODULE}/${MODULE}.zip
+	aws lambda update-function-code --function-name "nhk-news-alexa" --zip-file fileb://${MODULE}.zip
 
 install-module:
 	npm install request-promise
